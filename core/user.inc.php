@@ -6,8 +6,8 @@
 function checkUser($sql)
 {
     $link=connect();
-    $row = fetchOne($sql);
-    mysql_close($link);
+    $row = fetchOne($link,$sql);
+    mysqli_close($link);
     return $row;
 }
 /**
@@ -17,7 +17,7 @@ function checkUser($sql)
 function registerUser($array)
 {
     $link=connect();
-    $id=insert("san412_user",$array);
-    mysql_close($link);
+    $id=insert($link,"san412_user",$array);
+    mysqli_close($link);
     return $id;
 }

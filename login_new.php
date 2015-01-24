@@ -23,29 +23,51 @@
 			</div>
 		</div>
 	</div>
-
+	<div class="share"></div>
 	<div class="loginBox">
 		<div class="login_cont">
 			<form method="post">
 				<ul class="login">
 					<li class="l_tit">邮箱/用户名/手机号</li>
 					<li class="mb_10"><input type="text" name="username"
-						class="login_input user_icon"></li>
+						class="login_input user_icon"
+						<?php 
+						if(isset($_COOKIE['username'])){
+						    echo "value={$_COOKIE['username']}";
+						}  else {
+						    echo "value=请输入用户名";
+						}
+						    ?>></li>
 					<li class="l_tit">密码</li>
 					<li class="mb_10"><input type="password" name="password"
-						class="login_input user_icon"></li>
+						class="login_input user_icon" 
+						<?php 
+						if(isset($_COOKIE['password'])){
+						    echo "value={$_COOKIE['password']}";
+						}  else {
+						  
+						}?>></li>
 					<li class="l_tit">验证码</li>
 					<li class="mb_10"><input type="text" name="verify"
 						class="login_input user_icon"></li>
 					<li><img id="imgNumber" src="getVerify.php" alt=""
 						onmouseup="changeImage()" /><span id="lsc">点击图片换一张</span></li>
-					<li class="autoLogin"><input type="checkbox" id="a1"
-						class="checked"><label for="a1">自动登陆&nbsp;&nbsp;&nbsp;</label><input
-						type="checkbox" id="a2" class="checked"><label for="a2">保存密码</label></li>
-					<li><input type="hidden" value="e1s1" name="execution"></input></li>
+					<li class="autoLogin"><input name="autoLogin" type="checkbox"
+						id="a1" class="checked"><label for="a1">自动登陆&nbsp;&nbsp;&nbsp;</label><input
+						name="savepasswd" type="checkbox" id="a2" class="checked" 
+						<?php 
+						if(isset($_COOKIE['username'])&&isset($_COOKIE['password'])){
+						    echo "checked=\"checked\"";
+						}  else {
+						    
+						}?>><label for="a2">保存密码</label></li>
+					<li><input type="hidden" " name="execution"></input></li>
 					<li><input type="submit" value="" class="login_btn" /></li>
 				</ul>
 			</form>
+			<div class="reg_1">
+				<a href="register.php"> 没有账号？免费注册</a>
+			</div>
 			<div class="login_partners">
 				<p class="l_tit">使用合作方账号登陆网站</p>
 				<ul class="login_list clearfix">
@@ -61,7 +83,6 @@
 				</ul>
 			</div>
 		</div>
-		<a class="reg_link" href="register.php"></a>
 	</div>
 
 	<div class="hr_25"></div>
@@ -75,7 +96,7 @@
 </html>
 <?php
 require_once 'include.php';
-if ($_POST['execution'] == 'e1s1') {
+if (isset($_POST['execution'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $verify = $_POST['verify'];
@@ -84,13 +105,21 @@ if ($_POST['execution'] == 'e1s1') {
         $sql = "select * from san412_user where username='{$username}' and password='{$password}'";
         if (checkUser($sql)) {
             echo "<script>alert('success');</script>";
+            if (isset($_POST['autoLogin'])) {}
+            if (isset($_POST['savepasswd'])) {
+                setcookie("username", $username, time() + 7 * 24 * 3600);
+                setcookie("password", $password, time() + 7 * 24 * 3600);
+            } else {
+                setcookie("username", "", time() - 3600);
+                setcookie("password", "", time() - 3600);
+            }
         } else {
             echo "<script>alert('user or password is wrong');</script>";
-            $_POST['execution'] = '';
+            unset($_SESSION['execution']);
         }
     } else {
         echo "<script>alert('verify number is wrong');</script>";
-        $_POST['execution'] = '';
+        unset($_SESSION['execution']);
     }
 }
 ?>

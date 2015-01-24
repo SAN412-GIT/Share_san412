@@ -104,7 +104,7 @@
 .footer{text-align:center; background-color:#D4D4D4; line-height:24px; padding:50px 0;}
 .footer i{font-style:normal; margin:0 5px; }
 .footer a{color:#000;}
-.footer a:hover{color:#F60;}
+.footer a:hover{color:blue;}
 .web{padding-top:30px;}
 .web img{margin:0 12px;}
 .hr_25{height:25px;}
@@ -353,7 +353,7 @@
 /*登陆*/
 .login_logo .comWidth{width:460px;}
 .welcome_title{font:32px/85px "Microsoft YaHei", "微软雅黑"; color:#FFF; float:left; padding-left:44px;padding-top:30px;}
-.loginBox{width:458px; border:#999 solid 1px; margin:10px auto; position:relative;background:#f2f2f2;position:relative;left:350px;}
+.loginBox{width:458px; border:#999 solid 1px; margin:10px auto; position:relative;background:#eeeeee;position:relative;left:350px;}
 .login_cont{padding:15px 76px;}
 .l_tit{color:#666; line-height:20px;}
 .login_input{border:#555 solid 1px; height:32px; line-height:32px\9; text-indent:5px; width:100%;}
@@ -366,7 +366,7 @@
 .login_refresh_btn{width:80px; height:20px; background:#CCC}
 .login_partners{padding-top:34px;}
 .login_list li{float:left; line-height:20px;}
-.login_list a:hover{color:blue;}
+.login_list a:hover{color:blue;text-decoration:underline;}
 .login_list span{color:#999; margin:0 2px;}
 .reg_link{width:115px; height:31px; background:url(../images/icon/red_link.jpg) left top no-repeat; position:absolute; right:31px; bottom:-31px;}
 .red_logo .comWidth{width:430px;}
@@ -391,11 +391,12 @@ body {
   font-size: 14px;
   line-height: 20px;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #eaeaea;
 }
 
 .share{width:354px; height:295px; background:url(../images/share.jpg) left top no-repeat;float:left;position:relative;top:70px;left:150px;}
-
-
+.reg_1{position:relative;left:180px;}
+.reg_1 a:hover{text-decoration:underline;}
+.reg_1 a{color:blue;}
 
 

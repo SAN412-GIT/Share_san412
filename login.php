@@ -35,9 +35,12 @@
 			<li class="l_tit">验证码</li>
 			<li class="mb_10"><input type="text" name="verify" class="login_input user_icon"></li>
 			<li><img id="imgNumber" src="getVerify.php" alt="" onmouseup="changeImage()"/><span id="lsc">点击图片换一张</span></li>
-			<li class="autoLogin"><input type="checkbox" id="a1" class="checked"><label for="a1">自动登陆&nbsp;&nbsp;&nbsp;</label><input type="checkbox" id="a2" class="checked"><label for="a2">保存密码</label></li>
+			<li class="autoLogin"><input name="autoLogin" type="checkbox" id="a1" class="checked"><label for="a1">自动登陆&nbsp;&nbsp;&nbsp;</label><input name="savepasswd" type="checkbox" id="a2" class="checked"><label for="a2">保存密码</label></li>
 			<li><input type="submit" value="" class="login_btn"/></li>
 		</ul>
+		<div  class="reg_1">
+		     <a href="register.php"> 没有账号？免费注册</a>
+		</div>
 		<div class="login_partners">
 			<p class="l_tit">使用合作方账号登陆网站</p>
 			<ul class="login_list clearfix">
@@ -53,7 +56,6 @@
 			</ul>
 		</div>
 	</div>
-	<a class="reg_link" href="register.php"></a>
 </div>
 </form>
 
