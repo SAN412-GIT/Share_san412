@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	<div class="headerBar">
+	<div>
 		<div class="logoBar login_logo">
 			<div class="comWidth">
 				<div class="logo fl">
@@ -27,26 +27,25 @@
 	<div class="loginBox">
 		<div class="login_cont">
 			<form method="post">
-				<ul class="login">
+				<ul>
 					<li class="l_tit">邮箱/用户名/手机号</li>
 					<li class="mb_10"><input type="text" name="username"
 						class="login_input user_icon"
-						<?php 
-						if(isset($_COOKIE['username'])){
-						    echo "value={$_COOKIE['username']}";
-						}  else {
-						    echo "value=请输入用户名";
-						}
-						    ?>></li>
+						<?php
+    if (isset($_COOKIE['username'])) {
+        echo "value={$_COOKIE['username']}";
+    } else {
+        echo "value=请输入用户名";
+    }
+    ?>></li>
 					<li class="l_tit">密码</li>
 					<li class="mb_10"><input type="password" name="password"
-						class="login_input user_icon" 
-						<?php 
-						if(isset($_COOKIE['password'])){
-						    echo "value={$_COOKIE['password']}";
-						}  else {
-						  
-						}?>></li>
+						class="login_input user_icon"
+						<?php
+    if (isset($_COOKIE['password'])) {
+        echo "value={$_COOKIE['password']}";
+    } else {}
+    ?>></li>
 					<li class="l_tit">验证码</li>
 					<li class="mb_10"><input type="text" name="verify"
 						class="login_input user_icon"></li>
@@ -54,13 +53,12 @@
 						onmouseup="changeImage()" /><span id="lsc">点击图片换一张</span></li>
 					<li class="autoLogin"><input name="autoLogin" type="checkbox"
 						id="a1" class="checked"><label for="a1">自动登陆&nbsp;&nbsp;&nbsp;</label><input
-						name="savepasswd" type="checkbox" id="a2" class="checked" 
-						<?php 
-						if(isset($_COOKIE['username'])&&isset($_COOKIE['password'])){
-						    echo "checked=\"checked\"";
-						}  else {
-						    
-						}?>><label for="a2">保存密码</label></li>
+						name="savepasswd" type="checkbox" id="a2" class="checked"
+						<?php
+    if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
+        echo "checked=\"checked\"";
+    } else {}
+    ?>><label for="a2">保存密码</label></li>
 					<li><input type="hidden" " name="execution"></input></li>
 					<li><input type="submit" value="" class="login_btn" /></li>
 				</ul>
@@ -104,7 +102,8 @@ if (isset($_POST['execution'])) {
     if ($verify == $verify1) {
         $sql = "select * from san412_user where username='{$username}' and password='{$password}'";
         if (checkUser($sql)) {
-            echo "<script>alert('success');</script>";
+            echo "<script>alert('登陆成功');</script>";
+//             unset($_POST['execution']);
             if (isset($_POST['autoLogin'])) {}
             if (isset($_POST['savepasswd'])) {
                 setcookie("username", $username, time() + 7 * 24 * 3600);
@@ -114,12 +113,12 @@ if (isset($_POST['execution'])) {
                 setcookie("password", "", time() - 3600);
             }
         } else {
-            echo "<script>alert('user or password is wrong');</script>";
-            unset($_SESSION['execution']);
+            echo "<script>alert('用户名或密码错误');</script>";
+//             unset($_POST['execution']);
         }
     } else {
-        echo "<script>alert('verify number is wrong');</script>";
-        unset($_SESSION['execution']);
+        echo "<script>alert('验证码错误');</script>";
+//         unset($_POST['execution']);
     }
 }
 ?>
