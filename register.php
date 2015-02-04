@@ -18,7 +18,7 @@
 		<div class="logoBar red_logo">
 			<div class="comWidth">
 				<div class="logo fl">
-					<a href="#"><img src="images/san412_logo.png" alt="分享你的故事"></a>
+					<a href="#"><img src="images/icon/san412_logo.png" alt="分享你的故事"></a>
 				</div>
 				<h3 class="welcome_title">欢迎注册</h3>
 			</div>
@@ -74,12 +74,17 @@ if (isset($_POST['execution'])) {
                 echo "<script>alert('用户名已存在');</script>";
                 echo "<script>window.location='register.php';</script>";
             } else {
+                date_default_timezone_set("PRC");
+                $time = date("Y-m-d",time());  //此处有问题，由于数据库中regTime类型为int(10)整形，所以只能记录下2015
                 $array = array(
                     "username" => $username,
-                    "password" => $password
+                    "password" => $password,
+                    "regTime" => $time
                 );
-                registerUser($array);
-                echo "<script>alert('注册成功');</script>";
+                if(registerUser($array)){
+                    echo "<script>alert('注册成功');</script>";
+                    echo "<script>window.location='login.php';</script>";
+                }
             }
         } else {
             echo "<script>alert('两次密码输入不一致');</script>";

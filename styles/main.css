@@ -356,6 +356,7 @@
 .login_cont{padding:15px 76px;}
 .l_tit{color:#666; line-height:20px;}
 .login_input{border:#555 solid 1px; height:32px; line-height:32px\9; text-indent:5px; width:100%;}
+
 /*.user_icon{background:url(../images/icon/user_icon.jpg) right center no-repeat;}*/
 .user_icon{background:#fff;}
 .mb_10{margin-bottom:10px;}
@@ -391,12 +392,17 @@ body {
   font-size: 14px;
   line-height: 20px;
   color: #333333;
-  background-color: #eaeaea;
+  background: #f0f0f0;
 }
 
-.share{width:354px; height:295px; background:url(../images/share.jpg) left top no-repeat;float:left;position:relative;top:70px;left:150px;}
+.share{width:354px; height:295px; background:url(../images/icon/share.png) left top no-repeat;float:left;position:relative;top:70px;left:150px;}
 .reg_1{position:relative;left:180px;}
 .reg_1 a:hover{text-decoration:underline;}
 .reg_1 a{color:blue;}
 
-
+/* sendpassage样式 */
+.send_title{border:#555 solid 1px; height:32px; line-height:32px\9; width:20%;}
+.send_summary{border:#555 solid 1px; height:128px;  width:40%;}
+.send_content{border:#555 solid 1px; height:300px; width:60%;}
+.text_10{font:14px/2em "Microsoft YaHei" #fff; }
+.sub{}

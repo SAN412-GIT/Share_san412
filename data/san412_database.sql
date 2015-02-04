@@ -28,6 +28,16 @@ pid int unsigned not null,
 albumPath varchar(50) not null
 );
 
+--table for passage
+DROP TABLE IF EXISTS san412_passage;
+CREATE TABLE san412_passage(
+id int unsigned auto_increment key,
+pid int unsigned not null,
+albumPath varchar(50) not null,
+filePath varchar(50) not null
+);
+
+
 
 
 

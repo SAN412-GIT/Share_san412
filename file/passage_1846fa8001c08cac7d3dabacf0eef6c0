@@ -1,0 +1,4 @@
+title:session_destroy
+summary:session_destroy — 销毁一个会话中的全部数据
+content:session_destroy() 销毁当前会话中的全部数据， 但是不会重置当前会话所关联的全局变量， 也不会重置会话 cookie。 如果需要再次使用会话变量， 必须重新调用 session_start() 函数。
+为了彻底销毁会话，比如在用户退出登录的时候，必须同时重置会话 ID。 如果是通过 cookie 方式传送会话 ID 的，那么同时也需要 调用 setcookie() 函数来 删除客户端的会话 cookie.

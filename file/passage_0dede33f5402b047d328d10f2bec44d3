@@ -1,0 +1,5 @@
+title:U盘安装Ubuntu 14.10
+summary:Ubuntu 14.10 (代号为 Utopic Unicorn) 正式发布下载。Ubuntu 14.10 根据以往的传统，集成了最新的开源技术，是高质量，易于使用的 Linux 发行版。Ubuntu 团队在这个生命周期中着重于开发者体验，引入了大量非常重要的新特性和 bug 修复（安全增强）。
+content:此版本需要更新大量的核心包，包括一个新的，基于 3.16 的内核，一个带有细粒度 socket 控件的 AppArmor 等等。
+Ubuntu 桌面也有重大改进，更新版本的 GTK 和 Qt，更新重要的包，比如 Firefox 和 LibreOffice，同时还改进了 Unity，High-DPI 显示支持。
+Ubuntu Server 14.10 包括 OpenStack 发布的 Juno，同时还有部署和管理工具，用来保存部署发行应用的开发团队时间—— 无论在私有云，公有云，x86 或者 ARM 服务器，甚至是在开发者笔记本电脑上。几个关键服务器技术，从 MAAS 到 Ceph，已经更新到最新版本，包括他们所有的新特性。

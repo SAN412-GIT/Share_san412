@@ -1,0 +1,4 @@
+title:如果出错返回 false
+summary:fread() 从文件指针 file 读取最多 length 个字节。
+content:fread() 从文件指针 file 读取最多 length 个字节。该函数在读取完最多 length 个字节数，或到达 EOF 的时候，或（对于网络流）当一个包可用时，或（在打开用户空间流之后）已读取了 8192 个字节时就会停止读取文件，视乎先碰到哪种情况。
+返回所读取的字符串，如果出错返回 false。
