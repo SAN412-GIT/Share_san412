@@ -1,3 +1,6 @@
+<?php 
+require_once 'include.php';
+?>
 <!doctype html>
 <html>
 <head>
@@ -31,19 +34,34 @@
 				<ul>
 					<li class="l_tit">邮箱/用户名/手机号</li>
 					<li class="mb_10"><input type="text" name="username"
-						class="login_input user_icon"></li>
+						class="login_input user_icon" 
+						<?php
+	                               if(isset($_SESSION['username2'])){
+		                                   echo "value={$_SESSION['username2']}";
+	                               } 
+                         ?>></li>
 					<li class="l_tit">密码</li>
 					<li class="mb_10"><input type="password" name="password"
-						class="login_input user_icon"></li>
+						class="login_input user_icon" 
+						<?php
+	                               if(isset($_SESSION['password2'])){
+		                                   echo "value={$_SESSION['password2']}";
+	                               } 
+                         ?>></li>
 					<li class="l_tit">确认密码</li>
 					<li class="mb_10"><input type="password" name="password1"
-						class="login_input user_icon"></li>
+						class="login_input user_icon" 
+						<?php
+	                               if(isset($_SESSION['password3'])){
+		                                   echo "value={$_SESSION['password3']}";
+	                               } 
+                         ?>></li>
 					<li class="l_tit">验证码</li>
 					<li class="mb_10"><input type="text" name="verify"
 						class="login_input user_icon"></li>
 					<li><img id="imgNumber" src="getVerify.php" alt=""
 						onmouseup="changeImage()" /><span id="lsc">点击图片换一张</span></li>
-					<li><input type="hidden" " name="execution"></input></li>
+					<li><input type="hidden"  name="execution" /></li>
 					<li><input type="submit" value="" class="reg_btn" /></li>
 				</ul>
 			</form>
@@ -60,7 +78,6 @@
 </body>
 </html>
 <?php
-require_once 'include.php';
 if (isset($_POST['execution'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -87,10 +104,20 @@ if (isset($_POST['execution'])) {
                 }
             }
         } else {
+            $_SESSION['username2'] = $username;
+            if(isset($_SESSION['password2'])){
+                    unset($_SESSION['password2']);
+            }
+            if(isset($_SESSION['password3'])){
+                    unset($_SESSION['password3']);
+            }
             echo "<script>alert('两次密码输入不一致');</script>";
             echo "<script>window.location='register.php';</script>";
         }
     } else {
+        $_SESSION['username2'] = $username;
+        $_SESSION['password2'] = $password;
+        $_SESSION['password3'] = $password1;
         echo "<script>alert('验证码错误');</script>";
         echo "<script>window.location='register.php';</script>";
     }

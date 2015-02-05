@@ -17,7 +17,7 @@ function getOffsetRows($pageSize = 5,$page = 1)
         $page = $totalPage;
     }
     $offset = ($page - 1) * $pageSize;
-    $sql = "select * from san412_passage where id between ".($totalRows-$offset-4).
+    $sql = "select * from san412_passage where id between ".($totalRows-$offset-$pageSize+1).
     " and ".($totalRows-$offset) ." order by id desc";
     $rows = getRows($sql);
     return $rows;

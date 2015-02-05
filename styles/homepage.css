@@ -63,8 +63,8 @@
 	right : 50px;  	
 }
 .pos_4{
-	/* position : absolute;
-	left : 60px;  	 */
+/* 	position : absolute;
+	left : 60px;  	  */
 }
 .text_3{
     font-family : "微软雅黑";
@@ -106,6 +106,5 @@ overflow: hidden;
 .long_string{
 /*     border-left : 2px solid #ff6000;
 	position : absolute;
-	right : 100px;  */
-	
+	right : 100px;  */	
 }

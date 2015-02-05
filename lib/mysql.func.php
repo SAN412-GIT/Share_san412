@@ -71,7 +71,11 @@ function fetchAll( $link,$sql,$result_type=MYSQL_ASSOC){
     while (@$row=mysqli_fetch_array($result,$result_type)){
         $rows[]=$row;
     }
-    return $rows;
+    if(isset($rows)){
+            return $rows;
+    }else {
+            return false;  
+    }
 }
 /**
  *descript:得到结果集中的所有记录的条数

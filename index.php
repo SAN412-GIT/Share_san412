@@ -1,3 +1,6 @@
+<?php 
+require_once 'include.php';
+?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
 <head>
@@ -15,19 +18,17 @@
 	<div class="back body-content">
 	<div class="menu">
 	                    <div class="long_string">
-	                             <?php
-	                             require_once 'include.php';
-	                             if(isset($_COOKIE['username']) and $_COOKIE['password']){
-	                                 $username = $_COOKIE['username'];
-	                                 $password = $_COOKIE['password'];
-	                                 $sql = "select * from san412_user where username='{$username}' and password='{$password}'";
-	                                 if (checkUser($sql)) {
-	                                     $_SESSION['username'] = $username;
-	                                 }
-	                             }   
+	                             <?php	                            
+ 	                             if(isset($_COOKIE['username']) and $_COOKIE['password']){
+ 	                                 $username = $_COOKIE['username'];
+ 	                                 $password = $_COOKIE['password'];
+ 	                                 $sql = "select * from san412_user where username='{$username}' and password='{$password}'";
+ 	                                 if (checkUser($sql)) {
+ 	                                     $_SESSION['username'] = $username;
+ 	                                }
+ 	                             }   
 	                             if(isset($_SESSION['username'])){
-	                                 echo "<p class=\"text_2 pos_1\">您好，".$_SESSION['username']."<span>&nbsp;<a class=\"text_2 pos_4\" href=\"logout.php\">退出</a></span></p>";
-	                              //   echo "<a class=\"text_2 pos_4\" href=\"#\">退出</a>";
+	                                 echo "<p class=\"text_2 pos_1\">您好，".$_SESSION['username']."<span>&nbsp;<a class=\"text_2\" href=\"logout.php\">退出</a></span></p>";
 	                             }else{
 	                                  echo "<a href=\"login.php\" class=\"text_2 pos_2\">登录</a>";
 	                             }
@@ -51,7 +52,8 @@
 		$pageSize = 5;
 		$page = isset($_REQUEST['page']) ? $_REQUEST['page'] : 1;
 		$rows = getOffsetRows($pageSize,$page);
-		foreach ($rows as $values){?>
+		if($rows){
+		            foreach ($rows as $values){?>
         <div class="border-section"></div>
 		<div class="caption">
 		<div class="left">
@@ -78,7 +80,7 @@
                echo $tiltle;?></p>
 			</div>
 		</div>
-		<?php }?>
+		<?php }}?>
 		<div>
 		      <?php 
 		                     $url = $_SERVER['PHP_SELF'];

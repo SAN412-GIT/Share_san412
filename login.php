@@ -1,3 +1,6 @@
+<?php 
+require_once 'include.php';
+?>
 <!doctype html>
 <html>
 <head>
@@ -32,17 +35,20 @@
 					<li class="mb_10"><input type="text" name="username"
 						class="login_input user_icon"
 						<?php
-    if (isset($_COOKIE['username'])) {
+	if(isset($_SESSION['username1'])){
+	    echo "value={$_SESSION['username1']}";
+	}else if (isset($_COOKIE['username'])) {
         echo "value={$_COOKIE['username']}";
     } else {
-        echo "value=请输入用户名";
     }
     ?>></li>
 					<li class="l_tit">密码</li>
 					<li class="mb_10"><input type="password" name="password"
 						class="login_input user_icon"
 						<?php
-    if (isset($_COOKIE['password'])) {
+	if(isset($_SESSION['username1'])){
+		echo "value={$_SESSION['username1']}";
+	}else if (isset($_COOKIE['password'])) {
         echo "value={$_COOKIE['password']}";
     } else {}
     ?>></li>
@@ -93,7 +99,6 @@
 </body>
 </html>
 <?php
-require_once 'include.php';
 if (isset($_POST['execution'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -115,10 +120,13 @@ if (isset($_POST['execution'])) {
                 setcookie("password", "", time() - 3600);
             }
         } else {
+            setcookie("username1", $username, time());
             echo "<script>alert('用户名或密码错误');</script>";
 //             unset($_POST['execution']);
         }
     } else {
+       $_SESSION['username1'] = $username;
+       $_SESSION['password1'] = $password;
         echo "<script>alert('验证码错误');</script>";
 //         unset($_POST['execution']);
     }
